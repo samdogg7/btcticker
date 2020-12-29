@@ -124,12 +124,16 @@ def updateDisplay(config,pricestack,whichcoin,fiat,timeframe,random_quotes):
     else:
         pricenowstring =str(float('%.5g' % pricenow))
 
+    timeframe_text = " days "
+    if int(timeframe) <= 1:
+        timeframe_text = " day "
+
     if config['display']['orientation'] == 0 or config['display']['orientation'] == 180 :
         epd = epd2in7.EPD()
         epd.Init_4Gray()
         image = Image.new('L', (epd.width, epd.height), 255)    # 255: clear the image with white
         draw = ImageDraw.Draw(image)
-        draw.text((110,80),str(timeframe) + "day :",font =font_date,fill = 0)
+        draw.text((110,80),str(timeframe) + timeframe_text,font =font_date,fill = 0)
         draw.text((110,95),pricechange,font =font_date,fill = 0)
         # Print price to 5 significant figures
         draw.text((5,200),symbolstring+pricenowstring,font =font,fill = 0)
@@ -146,7 +150,7 @@ def updateDisplay(config,pricestack,whichcoin,fiat,timeframe,random_quotes):
         image = Image.new('L', (epd.height, epd.width), 255)    # 255: clear the image with white
         random_quote = random.choice(random_quotes)
         draw = ImageDraw.Draw(image)
-        draw.text((100,80),str(timeframe)+"day :"+pricechange,font =font_date,fill = 0)
+        draw.text((100,80), str(timeframe) + timeframe_text + pricechange,font =font_date,fill = 0)
         # Print price to 5 significant figures
         draw.text((5,95),"$"+pricenowstring,font =fontHorizontal,fill = 0)
         image.paste(sparkbitmap,(80,30))

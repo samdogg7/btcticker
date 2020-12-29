@@ -1,7 +1,12 @@
 display:
-  inverted: true
-  orientation: 90
+  inverted: false
+  orientation: 270
 ticker:
-  currency: bitcoin,litecoin,bitcoin-cash,ethereum,stellar,monero, uniswap 
-  fiatcurrency: gbp,usd,eur,jpy,chf
-  updatefrequency: 600
+  currency: 'bitcoin,ethereum,link'
+  fiatcurrency: usd
+  timeframes: '7,30,365,1'
+  updatefrequency: 300
+  randomquotes:
+    - TOO THE MOON!
+    - TAKE PROFITS -> DIVERSIFY
+    - TIME IN THE MARKET >>>
